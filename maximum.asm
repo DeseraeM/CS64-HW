@@ -11,7 +11,7 @@
 
 enter:      .asciiz "Enter number:\n"
 newline:    .asciiz "\n"
-max:        .asciiz "Maximun: "
+max:        .asciiz "Maximum: "
 
 #Text Area (i.e. instructions/code directive)
 .text

@@ -99,13 +99,11 @@ while:
     la $a0, spacech
     syscall
 
-    
-   
-    addi $t3, $t3, 1 
-
     li $v0, 1
     move $a0, $t4
     syscall
+   
+    addi $t3, $t3, 1 
     j while
 
 exit:
