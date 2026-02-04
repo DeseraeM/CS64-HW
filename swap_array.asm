@@ -195,38 +195,45 @@ doSwap:
         # }
 
         # TODO: fill in the assembly code here:
-       li $t0, 0
-        li $t1, 1
+	li $t0, 0
+	li $t1, 1
         #li $t2, temp
+        li $a3, 11
 
-        
+	
  while:
-        slt $t3,$t0, $t1
+	slt $t3,$t0, $a3
 
-        beq $t3, $zero, exit
-       #gets the base address 
-       #int temp = myArray[x]   
+	beq $t3, $zero, finished
+        #gets the base address    
+        la $t2, myArray
+        move $t6, $t0
+        sll $t6, $t6, 2
+        addu $t2, $t2, $t6
+        move $t5, $t2
+        lw $t2,0($t2)
+
+        la $t2, myArray
+        move $t6, $t0 
+        sll $t6, $t6, 2
+        addu $t2, $t2, $t6
+        move $t5, $t2
+        lw $t2, 0($t2)
+        move $a1, $t2
+
+
        la $t2, myArray
-       #copy of x
-       move $t6, $t0 
-       sll $t6, $t6, 2
-       addu $t2, $t2, $t6
-       move $t5, $t2
-       lw $t2, 0($t2)
 
-       #myArray[x] = myArray[y]
-       la $t2, myArray
-       #copy of y
-       move $t7, $t1 
-       sll $t7, $t7, 2
-       addu $t2, $t2, $t7
-       move $t3, $t2
-       lw $t2, 0($t2)
-       move $a1, $t2
-       sw $t2, 0($t5)
+        #copy of y index
+        move $t7, $t1 
+        sll $t7, $t7, 2
+        addu $t2, $t2, $t7
+        move $t3, $t2
+        lw $t2, 0($t2)
+        sw $t2, 0($t5)
 
-     #myArray[y] = temp
-       sw $a1, 0($t3)
+
+        sw $a1, 0($t3)
 
         #increments
         addi $t0, $t0, 2

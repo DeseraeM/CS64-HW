@@ -8,44 +8,42 @@
 .text
 main:
 	# TODO: Write your code here!
-       li $v0, 4
-       move $t0, $v0 
-       syscall
-      
-      #li $t1 b 
-      #li $t2 c
+        #user input 
+          li $v0, 5
+          syscall
+          move $t0, $v0
 
-      li $t3, 5
-      li $t4, 64
-      li $t5, 8 
+         li $v0, 5
+         syscall          
+         move $t1, $v0
 
-      mult $t3, $t1
-      mflo $t3
-      sub $t0, $t0, $t3
-     
-     sll $t0, $t0, 3
+         li $v0, 5
+         syscall
+         move $t2,$v0
+ 
+#         li $t0, a
+        # li $t1, b
+        # li $t2, c
+         li $t3, 5
+ #        li $t4, 8
+#         li $t5, 64
 
-     sll $t2, $t2, 6
-     
-     add $t7, $t0, $t2
+         mult $t1, $t3
+         mflo $t1
 
-     #here it prints out the stuff
+         sub $t0, $t0, $t1
 
-     li $v0, 10
-     move $a0, $t0
-     syscall
+         sll $t0, $t0, 3
 
-     li $v0, 10
-     move $a0, $t1
-     syscall
+         sll $t2, $t2, 6
 
+         add $t0, $t0, $t2
 
-
-
-     li $v0, 10
-     move $a0, $t7
-     syscall
+         #printing
+         li $v0, 1
+         move $a0, $t0
+         syscall
 exit:
 	# Exit SPIM: Write your code here!
-    li $v0, 10
-    syscall
+        li $v0, 10
+         syscall
