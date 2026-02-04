@@ -52,8 +52,7 @@ main:
     # print f1 " " f2
 
 if:
-    li $t7, 1
-    slt $t5, $t7, $t1
+    slt $t5, $t0, $t1
 
     bne $t5, $zero, exit
     li $v0, 4
